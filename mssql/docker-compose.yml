@@ -20,5 +20,6 @@ services:
       - MSSQL_BACKUP_DIR=/mssql/backup
       - MSSQL_LOG_DIR=/mssql/log
       - MSSQL_DATA_DIR=/mssql/data
+      - MSSQL_AGENT_ENABLED=true
     volumes:
       - '${HOST_DIR}:/mssql:rw'
