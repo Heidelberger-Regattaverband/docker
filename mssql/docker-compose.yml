@@ -1,21 +1,24 @@
-mssql:
-  image: 'mcr.microsoft.com/mssql/server:2019-latest'
-  container_name: ${NAME}
-  hostname: ${NAME}
-  restart: always
-  ports:
-    - '1433:1433'
-  environment:
-    - ACCEPT_EULA=Y
-    - MSSQL_SA_PASSWORD=${SA_PASSWORD}
-    - MSSQL_PID=Express
-    - MSSQL_LCID=1031
-    - MSSQL_COLLATION=Latin1_General_CI_AS
-    - MSSQL_DUMP_DIR=/mssql/dump
-    - MSSQL_MASTER_LOG_FILE=/mssql/log/mastlog.ldf
-    - MSSQL_MASTER_DATA_FILE=/mssql/data/master.mdf
-    - MSSQL_BACKUP_DIR=/mssql/backup
-    - MSSQL_LOG_DIR=/mssql/log
-    - MSSQL_DATA_DIR=/mssql/data
-  volumes:
-    - '${HOST_DIR}:/mssql:rw'
+version: "3.7"
+    
+services:
+  mssql:
+    image: 'mcr.microsoft.com/mssql/server:2019-latest'
+    container_name: ${NAME}
+    hostname: ${NAME}
+    restart: always
+    ports:
+      - '1433:1433'
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${SA_PASSWORD}
+      - MSSQL_PID=Express
+      - MSSQL_LCID=1031
+      - MSSQL_COLLATION=Latin1_General_CI_AS
+      - MSSQL_DUMP_DIR=/mssql/dump
+      - MSSQL_MASTER_LOG_FILE=/mssql/log/mastlog.ldf
+      - MSSQL_MASTER_DATA_FILE=/mssql/data/master.mdf
+      - MSSQL_BACKUP_DIR=/mssql/backup
+      - MSSQL_LOG_DIR=/mssql/log
+      - MSSQL_DATA_DIR=/mssql/data
+    volumes:
+      - '${HOST_DIR}:/mssql:rw'
