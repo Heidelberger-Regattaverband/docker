@@ -1,0 +1,4 @@
+[submodule "infopoint"]
+  path = infopoint/project
+  url = https://github.com/Heidelberger-Regattaverband/regatta-infopoint.git
+  branch = master
