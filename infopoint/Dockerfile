@@ -8,8 +8,8 @@ COPY . .
 EXPOSE 8080
 ENV RUST_LOG=INFO
 
-#RUN cargo build --release
-#CMD ["./target/release/infopoint"]
+RUN cargo build --release
+CMD ["./target/release/infopoint"]
 
-RUN cargo install --git https://github.com/Heidelberger-Regattaverband/regatta-infopoint.git --branch main
-CMD ["infopoint"]
+#RUN cargo install --git https://github.com/Heidelberger-Regattaverband/regatta-infopoint.git --branch main
+#CMD ["infopoint"]
