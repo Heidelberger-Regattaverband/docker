@@ -24,5 +24,6 @@ services:
     volumes:
       - '${HOST_DATA_DIR}:/mssql:rw'
       - '${HOST_FULLCHAIN_FILE}:/mssql/ssl/fullchain.pem:ro'
+      - '${HOST_CERT_FILE}:/mssql/ssl/cert.pem:ro'
       - '${HOST_PRIVKEY_FILE}:/mssql/ssl/privkey.pem:ro'
       - './mssql.conf:/var/opt/mssql/mssql.conf:ro'
