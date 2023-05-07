@@ -1,6 +1,6 @@
 Create data directory:
 ```bash
-mkdir mssql
+mkdir /mssql
 ```
 
 Fix permissions for docker container:
