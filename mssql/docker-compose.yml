@@ -4,7 +4,7 @@ services:
   mssql:
     image: 'mcr.microsoft.com/mssql/server:2019-latest'
     container_name: ${NAME}
-    hostname: ${NAME}
+    hostname: ${HOST_NAME}
     restart: always
     ports:
       - '1433:1433'
