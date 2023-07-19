@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  infoportal:
+    build: .
+    image: ${NAME}
+    container_name: ${NAME}
+    hostname: ${HOST_NAME}
+    restart: always
+    ports:
+      - "80:${HTTP_PORT}"
+      - "443:${HTTPS_PORT}"
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_ENCRYPTION=${DB_ENCRYPTION}
+      - DB_POOL_MAX_SIZE=${DB_POOL_MAX_SIZE}
+      - HTTP_PORT=${HTTP_PORT}
+      - HTTP_RL_MAX_REQUESTS=${HTTP_RL_MAX_REQUESTS}
+      - HTTP_RL_INTERVAL=${HTTP_RL_INTERVAL}
+      - HTTPS_PORT=${HTTPS_PORT}
+      - HTTPS_CERT_PATH=/data/ssl/cert.pem
+      - HTTPS_KEY_PATH=/data/ssl/privkey.pem
+      - RUST_LOG=${RUST_LOG}
+    volumes:
+      - '${HOST_CERT_FILE}:/data/ssl/cert.pem:ro'
+      - '${HOST_PRIVKEY_FILE}:/data/ssl/privkey.pem:ro'
