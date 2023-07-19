@@ -2,14 +2,13 @@ version: '3.7'
 
 services:
   infoportal:
-    build: .
-    image: ${NAME}
+    image: ofterdinger/regatta-infoportal:latest
     container_name: ${NAME}
     hostname: ${HOST_NAME}
     restart: always
     ports:
-      - "80:${HTTP_PORT}"
-      - "443:${HTTPS_PORT}"
+      - ${HOST_HTTP_PORT}:${HTTP_PORT}
+      - ${HOST_HTTPS_PORT}:${HTTPS_PORT}
     environment:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
