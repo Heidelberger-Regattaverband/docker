@@ -3,27 +3,30 @@ version: '3.7'
 services:
   infoportal:
     image: ofterdinger/regatta-infoportal:latest
-    container_name: ${NAME}
+    container_name: infoportal
     hostname: ${HOST_NAME}
     restart: always
     ports:
-      - ${HOST_HTTP_PORT}:${HTTP_PORT}
-      - ${HOST_HTTPS_PORT}:${HTTPS_PORT}
+      - 80:8080
+      - 443:8443
     environment:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_ENCRYPTION=${DB_ENCRYPTION}
-      - DB_POOL_MAX_SIZE=${DB_POOL_MAX_SIZE}
-      - HTTP_PORT=${HTTP_PORT}
-      - HTTP_RL_MAX_REQUESTS=${HTTP_RL_MAX_REQUESTS}
-      - HTTP_RL_INTERVAL=${HTTP_RL_INTERVAL}
-      - HTTPS_PORT=${HTTPS_PORT}
+      - DB_ENCRYPTION=true
+      - DB_POOL_MAX_SIZE=10
+      - AUTH_USER_NAME=info
+      - AUTH_USER_PASSWORD=${AUTH_USER_PASSWORD}
+      - HTTP_PORT=8080
+      - HTTPS_PORT=8443
+      - HTTP_RL_MAX_REQUESTS=500
+      - HTTP_RL_INTERVAL=600
       - HTTPS_CERT_PATH=/data/ssl/cert.pem
       - HTTPS_KEY_PATH=/data/ssl/privkey.pem
-      - RUST_LOG=${RUST_LOG}
+      - RUST_LOG=infoportal=DEBUG
+      - RUST_BACKTRACE=1
     volumes:
       - '${HOST_CERT_FILE}:/data/ssl/cert.pem:ro'
       - '${HOST_PRIVKEY_FILE}:/data/ssl/privkey.pem:ro'
