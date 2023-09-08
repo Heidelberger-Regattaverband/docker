@@ -6,7 +6,7 @@
 set -x
 
 REMOTE=$1
-SSHPASS=$2
+export SSHPASS=$2
 
 # Angabe der Ordner die gesichert werden soll.
 # ACHTUNG
@@ -30,6 +30,6 @@ RSYNC=`which rsync`
 # Befehl
 #$RSYNC -avrpuE $RSYNCCONF $SOURCES $TARGET &gt; $LOGFILE
 
-sshpass -e $RSYNC -avr $SOURCES $TARGET
+$RSYNC -avr -e -e 'sshpass ssh -o StrictHostKeyChecking=no' $SOURCES $TARGET
 
 #exit 0
