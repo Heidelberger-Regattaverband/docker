@@ -30,6 +30,6 @@ RSYNC=`which rsync`
 # Befehl
 #$RSYNC -avrpuE $RSYNCCONF $SOURCES $TARGET &gt; $LOGFILE
 
-$RSYNC -avr -e -e 'sshpass ssh -o StrictHostKeyChecking=no' $SOURCES $TARGET
+$RSYNC -avr -e 'sshpass ssh -o StrictHostKeyChecking=no' $SOURCES $TARGET
 
 #exit 0
