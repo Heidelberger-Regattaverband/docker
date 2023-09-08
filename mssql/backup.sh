@@ -19,7 +19,7 @@ TARGET="${REMOTE}:/mssql/restore/"
 
 # Parameter zum Synchronisieren
 # --delete bewirkt ein Datenabgleich inklusive Löschen auf dem Backupmedium
-RSYNCCONF="--rsh='/usr/bin/sshpass -p password ${PASSWORD} -o StrictHostKeyChecking=no'"
+RSYNCCONF="--rsh='/usr/bin/sshpass -e -o StrictHostKeyChecking=no'"
 
 # Dateiname des Logfile
 LOGFILE="rsync_log.log"
@@ -30,6 +30,6 @@ RSYNC=`which rsync`
 # Befehl
 #$RSYNC -avrpuE $RSYNCCONF $SOURCES $TARGET &gt; $LOGFILE
 
-$RSYNC -avr $SOURCES $TARGET
+$RSYNC -avr $RSYNCCONF $SOURCES $TARGET
 
 #exit 0
