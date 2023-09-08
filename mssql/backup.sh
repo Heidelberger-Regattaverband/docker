@@ -12,7 +12,7 @@ SOURCES="/mssql/backup/"
 # Ziel des Backups auf dem entfernten Rechner.
 # Benötigt SSH-Key-Exchange
 REMOTE=$1
-TARGET="mssql@${REMOTE}:/mssql/restore"
+TARGET="${REMOTE}:/mssql/restore"
 
 # Parameter zum Synchronisieren
 # --delete bewirkt ein Datenabgleich inklusive Löschen auf dem Backupmedium
@@ -27,4 +27,4 @@ RSYNC=`which rsync`
 # Befehl
 $RSYNC -avrpuE $RSYNCCONF $SOURCES $TARGET &gt; $LOGFILE
 
-exit 0
+#exit 0
