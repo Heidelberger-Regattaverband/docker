@@ -3,6 +3,10 @@
 # Automatisches Sichern von speziellen anzugebenden Ordner
 # mit Hilfe von "rsync" und cronjob
 #
+
+REMOTE=$1
+PASSWORD=$2
+
 # Angabe der Ordner die gesichert werden soll.
 # ACHTUNG
 # /[Ordner]/ -&gt; Inhalt des Ordners wird gesichert
@@ -11,12 +15,11 @@ SOURCES="/mssql/backup/"
 
 # Ziel des Backups auf dem entfernten Rechner.
 # Benötigt SSH-Key-Exchange
-REMOTE=$1
 TARGET="${REMOTE}:/mssql/restore"
 
 # Parameter zum Synchronisieren
 # --delete bewirkt ein Datenabgleich inklusive Löschen auf dem Backupmedium
-RSYNCCONF="--delete"
+RSYNCCONF="--delete --rsh="/usr/bin/sshpass -p password $2 -o StrictHostKeyChecking=no -l username""
 
 # Dateiname des Logfile
 LOGFILE="rsync_log.log"
