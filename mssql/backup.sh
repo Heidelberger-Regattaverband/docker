@@ -7,7 +7,7 @@
 # ACHTUNG
 # /[Ordner]/ -&gt; Inhalt des Ordners wird gesichert
 # /[Ordner] -&gt; Ordner wird gesichert
-SOURCES="/mssql/backup"
+SOURCES="/mssql/backup/"
 
 # Ziel des Backups auf dem entfernten Rechner.
 # Benötigt SSH-Key-Exchange
