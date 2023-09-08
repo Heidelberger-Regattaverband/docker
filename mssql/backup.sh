@@ -6,7 +6,7 @@
 set -x
 
 REMOTE=$1
-export SSHPASS=$2
+SSHPASS=$2
 
 # Angabe der Ordner die gesichert werden soll.
 # ACHTUNG
