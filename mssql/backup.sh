@@ -7,11 +7,12 @@
 # ACHTUNG
 # /[Ordner]/ -&gt; Inhalt des Ordners wird gesichert
 # /[Ordner] -&gt; Ordner wird gesichert
-SOURCES="/home/[USER]/Dokumente /home/[USER]/Downloads"
+SOURCES="/mssql/backup"
 
 # Ziel des Backups auf dem entfernten Rechner.
 # Benötigt SSH-Key-Exchange
-TARGET="root@[REMOTE]:/home/backup/"
+REMOTE=$1
+TARGET="mssql@${REMOTE}:/mssql/restore"
 
 # Parameter zum Synchronisieren
 # --delete bewirkt ein Datenabgleich inklusive Löschen auf dem Backupmedium
