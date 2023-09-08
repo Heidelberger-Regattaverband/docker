@@ -3,6 +3,7 @@
 # Automatisches Sichern von speziellen anzugebenden Ordner
 # mit Hilfe von "rsync" und cronjob
 #
+set -x
 
 REMOTE=$1
 PASSWORD=$2
