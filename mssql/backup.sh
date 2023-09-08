@@ -22,7 +22,7 @@ TARGET="${REMOTE}:/mssql/restore/"
 RSYNCCONF="--delete"
 
 # Dateiname des Logfile
-LOGFILE="rsync_log.log"
+LOGFILE="/var/log/mssql_rsync.log"
 
 # Ort der Binär-Datei von "rsync"
 RSYNC=`which rsync`
