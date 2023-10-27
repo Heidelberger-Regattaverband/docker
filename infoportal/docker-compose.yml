@@ -24,7 +24,7 @@ services:
     image: prom/prometheus
     container_name: prometheus
     ports:
-      - "9091:9090"
+      - 9091:9090
     command: --config.file=/etc/prometheus/prometheus.yaml
     volumes:
       - ./prometheus.yaml:/etc/prometheus/prometheus.yaml
@@ -34,7 +34,7 @@ services:
     container_name: grafana
     restart: always
     ports:
-      - '3000:3000'
+      - 3000:3000
     environment:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD: admin
