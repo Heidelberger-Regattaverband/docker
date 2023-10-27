@@ -15,7 +15,6 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - HTTPS_CERT_PATH=/data/ssl/cert.pem
       - HTTPS_KEY_PATH=/data/ssl/privkey.pem
-      - ACTIVE_REGATTA_ID=${ACTIVE_REGATTA_ID}
       - RUST_LOG=${RUST_LOG}
     volumes:
       - '${HOST_CERT_FILE}:/data/ssl/cert.pem:ro'
