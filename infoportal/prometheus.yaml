@@ -2,9 +2,8 @@ global:
   scrape_interval: 5s
   evaluation_interval: 30s
 scrape_configs:
-  - job_name: actix-monitoring
+  - job_name: infoportal
     honor_labels: true
     scheme: http
     static_configs:
       - targets: ["infoportal:8080"]
-
