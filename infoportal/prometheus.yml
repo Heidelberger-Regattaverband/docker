@@ -6,9 +6,12 @@ scrape_configs:
 
   - job_name: infoportal
     scheme: https
+    tls_config:
+      insecure_skip_verify: true
     static_configs:
       - targets: ['infoportal:8443']
 
   - job_name: cadvisor
     static_configs:
       - targets: ['cadvisor:8080']
+
