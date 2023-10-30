@@ -1,3 +1,4 @@
+# template: https://github.com/rkudryashov/exploring-rust-ecosystem/blob/master/mongodb-redis/monitoring/grafana/provisioning/datasources/datasources.yml
 apiVersion: 1
 
 datasources:
