@@ -1,13 +1,17 @@
 version: "3"
+
 services:
+
   windows:
     image: dockurr/windows
     container_name: windows
     environment:
-      VERSION: "win11"
+      VERSION: "win10"
       RAM_SIZE: "2G"
       CPU_CORES: "2"
       DISK_SIZE: "50G"
+    volumes:
+      - windows_data:/storage
     devices:
       - /dev/kvm
     cap_add:
@@ -18,3 +22,6 @@ services:
       - 3389:3389/udp
     stop_grace_period: 2m
     restart: on-failure
+
+volumes:
+  windows_data:
