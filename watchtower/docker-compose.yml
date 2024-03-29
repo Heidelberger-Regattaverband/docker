@@ -8,3 +8,11 @@ services:
     command: --cleanup --include-restarting --include-stopped --tlsverify --schedule "0 0 3 * * *"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 20M
+        reservations:
+          cpus: '0.25'
+          memory: 10M
