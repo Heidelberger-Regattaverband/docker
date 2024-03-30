@@ -20,6 +20,11 @@ services:
     volumes:
       - '${HOST_CERT_FILE}:/data/ssl/cert.pem:ro'
       - '${HOST_PRIVKEY_FILE}:/data/ssl/privkey.pem:ro'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.40'
+          memory: 80M
 
   prometheus:
     image: prom/prometheus:latest
