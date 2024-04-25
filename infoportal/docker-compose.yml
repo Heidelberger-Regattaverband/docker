@@ -40,7 +40,7 @@ services:
       resources:
         limits:
           cpus: '0.40'
-          memory: 130M
+          memory: 150M
 
   grafana:
     image: grafana/grafana:latest
