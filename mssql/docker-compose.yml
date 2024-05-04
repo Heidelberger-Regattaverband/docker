@@ -23,6 +23,6 @@ services:
       - MSSQL_AGENT_ENABLED=true
     volumes:
       - '${HOST_DATA_DIR}:/mssql:rw'
-      - '${HOST_CERT_FILE}:/mssql/ssl/cert.pem:ro'
-      - '${HOST_PRIVKEY_FILE}:/mssql/ssl/privkey.pem:ro'
       - './mssql.conf:/var/opt/mssql/mssql.conf:ro'
+#      - '${HOST_CERT_FILE}:/mssql/ssl/cert.pem:ro'
+#      - '${HOST_PRIVKEY_FILE}:/mssql/ssl/privkey.pem:ro'
