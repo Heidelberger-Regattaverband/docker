@@ -23,8 +23,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.40'
-          memory: 80M
+          cpus: '0.50'
+          memory: 100M
 
   prometheus:
     image: prom/prometheus:latest
@@ -74,8 +74,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.30'
-          memory: 40M
+          cpus: '0.40'
+          memory: 50M
 
 volumes:
   prometheus_data:
