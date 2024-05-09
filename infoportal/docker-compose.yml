@@ -73,6 +73,7 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
     devices:
       - /dev/kmsg
+    privileged: true
     deploy:
       resources:
         limits:
