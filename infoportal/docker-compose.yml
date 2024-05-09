@@ -78,7 +78,7 @@ services:
       resources:
         limits:
           cpus: '0.40'
-          memory: 50M
+          memory: 60M
 
 volumes:
   prometheus_data:
