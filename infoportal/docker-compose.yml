@@ -24,7 +24,7 @@ services:
       resources:
         limits:
           cpus: '0.50'
-          memory: 100M
+          memory: 150M
 
   prometheus:
     image: prom/prometheus:latest
