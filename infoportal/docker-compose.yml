@@ -40,7 +40,7 @@ services:
       resources:
         limits:
           cpus: '0.40'
-          memory: 200M
+          memory: 300M
 
   grafana:
     image: grafana/grafana:latest
@@ -58,7 +58,7 @@ services:
       resources:
         limits:
           cpus: '0.40'
-          memory: 100M
+          memory: 200M
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
