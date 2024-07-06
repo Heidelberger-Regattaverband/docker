@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   infoportal:
@@ -7,6 +7,7 @@ services:
     hostname: ${HOST_NAME}
     restart: always
     ports:
+      - 80:8080
       - 443:8443
     environment:
       - DB_HOST=${DB_HOST}
@@ -15,8 +16,70 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - HTTPS_CERT_PATH=/data/ssl/cert.pem
       - HTTPS_KEY_PATH=/data/ssl/privkey.pem
-      - ACTIVE_REGATTA_ID=${ACTIVE_REGATTA_ID}
       - RUST_LOG=${RUST_LOG}
     volumes:
       - '${HOST_CERT_FILE}:/data/ssl/cert.pem:ro'
       - '${HOST_PRIVKEY_FILE}:/data/ssl/privkey.pem:ro'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 150M
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: always
+    ports:
+      - 9090:9090
+    command: --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    deploy:
+      resources:
+        limits:
+          cpus: '0.40'
+          memory: 300M
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - ./grafana/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+      - grafana_data:/var/lib/grafana
+    deploy:
+      resources:
+        limits:
+          cpus: '0.40'
+          memory: 200M
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    devices:
+      - /dev/kmsg
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          cpus: '0.40'
+          memory: 70M
+
+volumes:
+  prometheus_data:
+  grafana_data:
