@@ -1,4 +1,5 @@
-version: "3"
+version: '3.8'
+
 services:
   watchtower:
     image: containrrr/watchtower
@@ -7,3 +8,8 @@ services:
     command: --cleanup --include-restarting --include-stopped --tlsverify --schedule "0 0 3 * * *"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 20M
