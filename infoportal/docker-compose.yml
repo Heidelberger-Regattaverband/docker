@@ -39,8 +39,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.40'
-          memory: 300M
+          cpus: '0.50'
+          memory: 500M
 
   grafana:
     image: grafana/grafana:latest
