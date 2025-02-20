@@ -14,6 +14,7 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
+      - ACTIVE_REGATTA_ID=${ACTIVE_REGATTA_ID}
       - HTTPS_CERT_PATH=/data/ssl/cert.pem
       - HTTPS_KEY_PATH=/data/ssl/privkey.pem
       - RUST_LOG=${RUST_LOG}
