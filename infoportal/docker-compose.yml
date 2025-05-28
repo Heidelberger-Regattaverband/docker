@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   infoportal:
     image: ofterdinger/regatta-infoportal:latest
@@ -14,6 +12,7 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
+      - ACTIVE_REGATTA_ID=${ACTIVE_REGATTA_ID}
       - HTTPS_CERT_PATH=/data/ssl/cert.pem
       - HTTPS_KEY_PATH=/data/ssl/privkey.pem
       - RUST_LOG=${RUST_LOG}
@@ -39,8 +38,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.40'
-          memory: 300M
+          cpus: '0.50'
+          memory: 500M
 
   grafana:
     image: grafana/grafana:latest
