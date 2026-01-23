@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   moodle_mariadb:
     image: mariadb:lts
@@ -13,7 +11,7 @@ services:
       - MARIADB_CHARACTER_SET=utf8mb4
       - MARIADB_COLLATE=utf8mb4_unicode_ci
     volumes:
-      - 'mariadb_data:/bitnami/mariadb'
+      - "mariadb_data:/bitnami/mariadb"
   moodle:
     image: bitnami/moodle:4.2
     container_name: moodle
@@ -28,8 +26,8 @@ services:
       - MOODLE_DATABASE_PASSWORD=${DB_PASSWORD}
       - MOODLE_DATABASE_NAME=${DB_NAME}
     volumes:
-      - 'moodle_data:/bitnami/moodle'
-      - 'moodledata_data:/bitnami/moodledata'
+      - "moodle_data:/bitnami/moodle"
+      - "moodledata_data:/bitnami/moodledata"
     depends_on:
       - moodle_mariadb
   moodle_adminer:

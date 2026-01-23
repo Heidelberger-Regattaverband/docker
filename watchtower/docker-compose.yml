@@ -1,8 +1,8 @@
-version: '3.8'
-
 services:
+  # Watchtower - Automated Docker Container Updates
+  # see: https://watchtower.nickfedor.com
   watchtower:
-    image: containrrr/watchtower
+    image: nickfedor/watchtower
     container_name: watchtower
     restart: always
     command: --cleanup --include-restarting --include-stopped --tlsverify --schedule "0 0 3 * * *"
@@ -11,5 +11,5 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.50'
+          cpus: "0.50"
           memory: 20M

@@ -1,13 +1,11 @@
-version: '3.8'
-
 services:
   mssql:
-    image: 'mcr.microsoft.com/mssql/server:2022-latest'
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: ${NAME}
     hostname: ${HOST_NAME}
     restart: always
     ports:
-      - '${HOST_PORT}:1433'
+      - "${HOST_PORT}:1433"
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=${SA_PASSWORD}
@@ -22,7 +20,7 @@ services:
       - MSSQL_DATA_DIR=/mssql/data
       - MSSQL_AGENT_ENABLED=true
     volumes:
-      - '${HOST_DATA_DIR}:/mssql:rw'
-      - './mssql.conf:/var/opt/mssql/mssql.conf:ro'
+      - "${HOST_DATA_DIR}:/mssql:rw"
+      - "./mssql.conf:/var/opt/mssql/mssql.conf:ro"
 #      - '${HOST_CERT_FILE}:/mssql/ssl/cert.pem:ro'
 #      - '${HOST_PRIVKEY_FILE}:/mssql/ssl/privkey.pem:ro'
