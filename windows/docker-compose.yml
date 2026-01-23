@@ -1,15 +1,12 @@
-version: '3.8'
-
 services:
-
   windows:
     image: dockurr/windows
     container_name: windows
     environment:
-      VERSION: 'win10'
-      RAM_SIZE: '1.5G'
-      CPU_CORES: '1'
-      DISK_SIZE: '64G'
+      VERSION: win10
+      RAM_SIZE: 1.5G
+      CPU_CORES: "1"
+      DISK_SIZE: 64G
     volumes:
       - windows_data:/storage
     devices:
