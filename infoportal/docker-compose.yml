@@ -15,10 +15,11 @@ services:
       - ACTIVE_REGATTA_ID=${ACTIVE_REGATTA_ID}
       - HTTPS_CERT_PATH=/data/ssl/cert.pem
       - HTTPS_KEY_PATH=/data/ssl/privkey.pem
+      - AQUARIUS_HOST=${AQUARIUS_HOST}
       - RUST_LOG=${RUST_LOG}
     volumes:
-      - '${HOST_CERT_FILE}:/data/ssl/cert.pem:ro'
-      - '${HOST_PRIVKEY_FILE}:/data/ssl/privkey.pem:ro'
+      - ${HOST_CERT_FILE}:/data/ssl/cert.pem:ro
+      - ${HOST_PRIVKEY_FILE}:/data/ssl/privkey.pem:ro
     deploy:
       resources:
         limits:
