@@ -13,6 +13,7 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - ACTIVE_REGATTA_ID=${ACTIVE_REGATTA_ID}
+      - CACHE_TTL=${CACHE_TTL}
       - HTTPS_CERT_PATH=/data/ssl/cert.pem
       - HTTPS_KEY_PATH=/data/ssl/privkey.pem
       - AQUARIUS_HOST=${AQUARIUS_HOST}
@@ -65,8 +66,9 @@ services:
     container_name: cadvisor
     restart: always
     command:
-      - '--housekeeping_interval=10s'
-      - '--docker_only=true'
+      - --housekeeping_interval=10s
+      - --docker_only=true
+      - --disable_metrics=advtcp,cpu_topology,cpuset,disk,hugetlb,memory_numa,oom_event,percpu,perf_event,process,referenced_memory,resctrl,sched,tcp,udp
     ports:
       - 8080:8080
     volumes:
@@ -80,7 +82,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.40'
+          cpus: '0.10'
           memory: 70M
 
 volumes:
