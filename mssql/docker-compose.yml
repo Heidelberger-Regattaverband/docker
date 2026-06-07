@@ -1,7 +1,7 @@
 services:
   mssql:
     image: "mcr.microsoft.com/mssql/server:2025-latest"
-    container_name: ${NAME}
+    container_name: ${CONTAINER_NAME}
     hostname: ${HOST_NAME}
     restart: always
     ports:
