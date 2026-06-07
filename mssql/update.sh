@@ -3,9 +3,9 @@
 source .env
 
 docker compose pull
-docker compose up -d
+docker compose up --detach
 
-docker volume prune -f
-docker system prune -f
+docker volume prune --force --all
+docker system prune --force --all
 
-docker logs ${CONTAINER_NAME} -f
+docker logs ${CONTAINER_NAME} --follow
